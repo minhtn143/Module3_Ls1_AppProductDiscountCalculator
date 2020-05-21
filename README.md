@@ -1,79 +1,49 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+## [Bài tập] Ứng dụng Product Discount Calculator
+### Mục tiêu
+Luyện tập tạo ứng dụng Web PHP và xử lý dữ liệu nhập vào từ form.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+### Mô tả
+Ứng dụng Product Discount Calculator được sử dụng để tính chiết khấu cho sản phẩm khi mua hàng online.
 
-## About Laravel
+##### Trong trang đầu tiên, người dùng sẽ nhập vào các dữ liệu sau:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Product Description: Mô tả của sản phẩm
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- List Price: Giá niêm yết của sản phẩm
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Discount Percent: Tỷ lệ chiết khấu (phần trăm)
 
-## Learning Laravel
+- Khi người dùng nhấn vào nút Calculate Discount (Tính chiết khấu) thì sẽ đi đến trang /display-discount và hiển thị kết quả.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+##### Trang kết quả sẽ hiển thị các thông tin người dùng nhập vào, kèm theo kết quả tính toán:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Discount Amount: Lượng chiết khấu
 
-## Laravel Sponsors
+- Discount Price: Giá sau khi đã được chiết khấu
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- Công thức tính chiết khấu là:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-- [云软科技](http://www.yunruan.ltd/)
+        Discount Amount = List Price * Discount Percent * 0.1
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### Các bước thực hiện
+- Bước 1: Tạo Route có url.
+- Bước 2: Tạo form bằng ngôn ngữ HTML để người dùng nhập vào các trường dữ liệu.
+Bao gồm:
 
-## Code of Conduct
+    - Form có method là POST, có action trỏ đến url của route đac tạo ở bước 1.
+    - Ô input Product Description cho người dùng nhập vào mô tả của sản phẩm.
+    - Ô input List Price cho người dùng nhập vào giá.
+    - Ô input Discount Percent cho người dùng nhập vào giá chiết khấu.
+- Bước 3: Sử lý tính toán.
+    - Tại route, sử dụng class Illuminate/Request để nhận các dữ liệu được gửi lên từ form khi người dùng nhấn nút Submit, đồng thời viết code sử lý tính toán Discount Amount theo công thức bên trên và trả về kết quả cho người dùng.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Gợi ý: Sử dụng cú pháp sau để trả về kết quả ra view.
 
-## Security Vulnerabilities
+    return view('show_discount_amount', compact(['discountPrice', 'discountAmount', 'productDescription', 'price', 'discountPercent']));
+Bước 4: Tạo view hiển thị kết quả.
+Gợi ý: Ở bước trên chúng ta sử dụng 
+         
+    return view('show_discount_amount', compact(['discountPrice', 'discountAmount', 'productDescription', 'price', 'discountPercent'])); để đưa kết quả ra view, vì vậy tại view chúng ta sẽ sử dụng cú pháp {{ $discountAmount }} để hiển thị giá trị của biến $discountAmount lên màn hình, tương tự để hiển thị các dữ liệu khác.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Demo: http://demo.codegym.vn/lamp/1/product_discount/
